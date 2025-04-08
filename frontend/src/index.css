@@ -1,0 +1,160 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 180 5% 7%;
+    --foreground: 175 100% 50%;
+
+    --card: 180 5% 10%;
+    --card-foreground: 175 100% 50%;
+
+    --popover: 180 5% 7%;
+    --popover-foreground: 175 100% 50%;
+
+    --primary: 175 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 180 70% 15%;
+    --secondary-foreground: 175 100% 50%;
+
+    --muted: 180 5% 15%;
+    --muted-foreground: 175 50% 50%;
+
+    --accent: 180 50% 20%;
+    --accent-foreground: 175 100% 50%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 0%;
+
+    --border: 180 70% 20%;
+    --input: 180 70% 20%;
+    --ring: 175 100% 50%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 180 5% 7%;
+    --sidebar-foreground: 175 100% 50%;
+    --sidebar-primary: 175 100% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 180 50% 20%;
+    --sidebar-accent-foreground: 175 100% 50%;
+    --sidebar-border: 180 70% 20%;
+    --sidebar-ring: 175 100% 50%;
+  }
+
+  /* Dark mode is our default, but we'll keep this for consistency */
+  .dark {
+    --background: 180 5% 7%;
+    --foreground: 175 100% 50%;
+
+    --card: 180 5% 10%;
+    --card-foreground: 175 100% 50%;
+
+    --popover: 180 5% 7%;
+    --popover-foreground: 175 100% 50%;
+
+    --primary: 175 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 180 70% 15%;
+    --secondary-foreground: 175 100% 50%;
+
+    --muted: 180 5% 15%;
+    --muted-foreground: 175 50% 50%;
+
+    --accent: 180 50% 20%;
+    --accent-foreground: 175 100% 50%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 0%;
+
+    --border: 180 70% 20%;
+    --input: 180 70% 20%;
+    --ring: 175 100% 50%;
+    
+    --sidebar-background: 180 5% 7%;
+    --sidebar-foreground: 175 100% 50%;
+    --sidebar-primary: 175 100% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 180 50% 20%;
+    --sidebar-accent-foreground: 175 100% 50%;
+    --sidebar-border: 180 70% 20%;
+    --sidebar-ring: 175 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-privshare-terminal-black text-privshare-neon-green;
+    background-image: radial-gradient(rgba(0, 255, 221, 0.1) 1px, transparent 0);
+    background-size: 50px 50px;
+    background-position: -25px -25px;
+  }
+  
+  /* Digital scanline effect */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: repeating-linear-gradient(
+      transparent 0px,
+      rgba(0, 255, 221, 0.03) 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+}
+
+@layer components {
+  .cyber-card {
+    @apply bg-privshare-matrix-black border border-privshare-neon-green/30 shadow-[0_0_15px_rgba(0,255,221,0.2)] backdrop-blur-sm;
+  }
+  
+  .cyber-button {
+    @apply relative overflow-hidden bg-transparent border-2 border-privshare-neon-green text-privshare-neon-green hover:bg-privshare-neon-green/10 transition-all duration-300;
+  }
+
+  .cyber-button::before {
+    @apply content-[''] absolute top-0 left-0 w-full h-full bg-privshare-neon-green/5 transform scale-x-0 origin-right transition-transform duration-300;
+  }
+  
+  .cyber-button:hover::before {
+    @apply transform scale-x-100 origin-left;
+  }
+  
+  .cyber-input {
+    @apply bg-black/50 border-privshare-neon-green/50 text-privshare-neon-green placeholder:text-privshare-neon-green/40 focus:border-privshare-neon-green focus:ring-privshare-neon-green/20;
+  }
+  
+  .cyber-glow {
+    text-shadow: 0 0 5px rgba(0, 255, 221, 0.7), 0 0 10px rgba(0, 255, 221, 0.5);
+  }
+
+  .matrix-bg {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .matrix-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 11, 10, 0.7), rgba(0, 11, 10, 0.7)), 
+                linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+    z-index: -1;
+  }
+}
